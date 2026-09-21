@@ -1,11 +1,12 @@
-/* Novatama — Frappe v16 persistent Desk navigation.
- * Logo palette: blue #205375, orange #F66B0E.
- * Keep tokens local: dropdowns, forms and notifications use native Desk colors.
- */
-.body-sidebar-container .body-sidebar {
+/* Novatama — Frappe v16 Desk theme. */
+:root {
 	--novatama-blue: #205375;
 	--novatama-orange: #f66b0e;
 	--novatama-white: #ffffff;
+	--novatama-blue-hover: #19435f;
+}
+
+.body-sidebar-container .body-sidebar {
 	--sidebar-hover-color: #2d6588;
 	--sidebar-active-color: var(--novatama-orange);
 	--sidebar-border-color: rgb(255 255 255 / 18%);
@@ -68,4 +69,82 @@
 	outline: 2px solid var(--novatama-white);
 	outline-offset: -2px;
 	border-radius: 8px;
+}
+
+/* Desktop launcher only; workspace/form surfaces retain their native colors. */
+.desktop-wrapper {
+	background: var(--novatama-blue) !important;
+	min-height: 100vh;
+}
+
+.desktop-wrapper .desktop-container {
+	background: var(--novatama-blue);
+}
+
+.desktop-wrapper .desktop-container .icon-title,
+.desktop-wrapper .desktop-container .icon-subtitle,
+.desktop-wrapper .desktop-container .no-apps-message {
+	color: var(--novatama-white) !important;
+}
+
+/* Folder dialogs use their original surface and label colors. */
+.desktop-icon > .icon-container {
+	background: var(--novatama-orange) !important;
+	--folder-icon-background-color: var(--novatama-orange);
+}
+
+.desktop-icon > .icon-container > svg {
+	--icon-stroke: var(--novatama-white);
+	--icon-fill: var(--novatama-white);
+	color: var(--novatama-white) !important;
+}
+
+/* Preserve the original artwork, including white cutouts and antialiasing.
+ * Filters are defined once by novatama_theme.js, without editing icon assets.
+ */
+html.novatama-icon-filters .desktop-icon > .icon-container > img {
+	filter: url("#novatama-solid-icon");
+}
+
+html.novatama-icon-filters .desktop-icon > .icon-container > img[src*="/desktop_icons/outline/"] {
+	filter: url("#novatama-outline-icon");
+}
+
+.desktop-wrapper .desktop-container .desktop-icon:focus-visible {
+	outline: 2px solid var(--novatama-white);
+	outline-offset: 2px;
+}
+
+.desktop-wrapper .page-indicator {
+	background: rgb(255 255 255 / 45%);
+}
+
+.desktop-wrapper .page-indicator.active-page {
+	background: var(--novatama-orange) !important;
+}
+
+/* Primary actions throughout Desk, including dialogs and dropdown toggles. */
+.btn.btn-primary {
+	--btn-primary: var(--novatama-blue);
+	--icon-stroke: currentColor;
+	--icon-fill-bg: var(--novatama-blue);
+	background-color: var(--novatama-blue) !important;
+	border-color: var(--novatama-blue) !important;
+	color: var(--novatama-white) !important;
+}
+
+.btn.btn-primary:not(:disabled):not(.disabled):is(:hover, :active, .active),
+.show > .btn.btn-primary.dropdown-toggle {
+	background-color: var(--novatama-blue-hover) !important;
+	border-color: var(--novatama-blue-hover) !important;
+	--icon-fill-bg: var(--novatama-blue-hover);
+}
+
+.btn.btn-primary:focus-visible {
+	outline: 2px solid var(--novatama-orange);
+	outline-offset: 2px;
+}
+
+.btn.btn-primary:is(:disabled, .disabled) {
+	opacity: 0.65;
 }

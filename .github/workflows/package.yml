@@ -19,6 +19,6 @@ jobs:
           from zipfile import ZipFile
           with ZipFile(next(Path('dist').glob('*.whl'))) as wheel:
               names = wheel.namelist()
-              for path in ('hooks.py', 'modules.txt', 'patches.txt', 'public/css/novatama_theme.css'):
+              for path in ('hooks.py', 'modules.txt', 'patches.txt', 'public/css/novatama_theme.css', 'public/js/novatama_theme.js'):
                   assert 'novatama_theme_v16/' + path in names, path
           PY

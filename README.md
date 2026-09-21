@@ -1,6 +1,6 @@
 # Novatama Theme v16
 
-App theme untuk sidebar navigasi **Frappe / ERPNext 16**. Aktif otomatis untuk
+App theme untuk Desktop, tombol primary, dan sidebar navigasi **Frappe / ERPNext 16**. Aktif otomatis untuk
 semua pengguna Desk setelah app diinstal pada site.
 
 - Sidebar biru tua **#205375**, diambil dari warna dominan logo Novatama.
@@ -8,10 +8,13 @@ semua pengguna Desk setelah app diinstal pada site.
 - Menu aktif oranye **#F66B0E**, sesuai logo; hover biru lebih terang.
 - Berlaku pada light/dark mode, sidebar expanded/collapsed, serta drawer mobile.
 - Mengikuti status menu aktif dan perilaku navigasi bawaan Frappe.
-- CSS saja, tanpa JavaScript, perubahan core, fixture, atau migrasi data.
+- Desktop berlatar biru dengan tile oranye, ikon dan label putih.
+- Tombol `.btn-primary` di seluruh Desk berwarna biru, termasuk dialog, dengan hover biru lebih gelap.
+- CSS dan JavaScript kecil untuk filter warna gambar ikon; tanpa perubahan core, fixture, atau migrasi data.
 
-Target hanya sidebar navigasi `.body-sidebar` v16. Sidebar filter List/Form,
-login, website, konten halaman, logo aplikasi, dan permission tetap bawaan.
+Target sidebar navigasi `.body-sidebar`, launcher `.desktop-wrapper`, dan tombol
+`.btn-primary` v16. Navbar Desktop, sidebar filter List/Form, login, website,
+konten halaman, logo navbar, dan permission tetap bawaan.
 Tidak perlu membuat record Website Theme. Jangan aktifkan bersamaan dengan
 app lain yang mengubah CSS sidebar karena urutan stylesheet dapat berkonflik.
 
@@ -79,14 +82,15 @@ Edit `novatama_theme_v16/public/css/novatama_theme.css`:
 --novatama-white: #ffffff;
 ```
 
-`--sidebar-hover-color` mengatur warna hover. Semua token dibatasi pada sidebar.
+`--sidebar-hover-color` mengatur warna hover. Token merek berada di `:root`; selector permukaan dibatasi pada area yang ditheme.
 Teks putih di atas oranye logo memiliki kontras sekitar 2.9:1, sehingga tidak
 memenuhi WCAG AA untuk teks kecil. Jika perlu AA, gunakan oranye lebih gelap
 seperti `#B54708` untuk `--novatama-orange`.
 
 ## Preview dan verifikasi
 
-Buka `docs/preview.html` di browser untuk melihat contoh warna dengan CSS app
+Buka `docs/desktop-preview.html` untuk Desktop dan tombol primary, atau
+`docs/preview.html` untuk sidebar di browser untuk melihat contoh warna dengan CSS app
 sebenarnya. Preview adalah mockup navigasi, bukan site ERPNext yang berjalan.
 
 Paket Python dan asset dapat diperiksa dengan:
@@ -101,6 +105,8 @@ Checklist pada staging v16 sebelum produksi:
 - Coba Workspace, List, Form, dan Report; menu aktif tetap oranye setelah route berubah.
 - Coba light/dark mode, sidebar collapse/expand, nested section, dan drawer mobile.
 - Periksa keyboard focus, ikon, profile, dropdown menu, dan notification panel.
+- Periksa Desktop dengan ikon Solid/Outline, folder beserta thumbnail, dan pagination.
+- Coba tombol Save/New/Submit serta tombol dialog: normal, hover, active, focus, disabled.
 - Periksa dengan role pengguna berbeda; menu dan akses mengikuti permission asli.
 - Pastikan request `/assets/novatama_theme_v16/css/novatama_theme.css` berstatus 200.
 
@@ -108,6 +114,16 @@ Belum diuji instalasi pada site Frappe/ERPNext live. Selector dicocokkan dengan
 [source sidebar v16](https://github.com/frappe/frappe/blob/version-16/frappe/public/scss/desk/sidebar.scss)
 dan [template item v16](https://github.com/frappe/frappe/blob/version-16/frappe/public/js/frappe/ui/sidebar/sidebar_item.html).
 Integrasi stylesheet menggunakan [hook resmi](https://docs.frappe.io/framework/user/en/python-api/hooks).
+
+## Ikon Desktop
+
+Filter SVG mempertahankan bentuk gambar asli dan alpha/transparansi. Ikon Solid
+berlatar warna dengan simbol putih dipetakan ke oranye/putih; asset Outline bawaan
+memakai filter terbalik. Filter otomatis berlaku juga pada ikon yang dirender ulang
+dan thumbnail folder. Label di dalam dialog folder tetap mengikuti warna dialog.
+Logo custom berupa foto, gradien sangat terang, atau gambar dengan latar putih
+yang bukan asset Outline dapat memerlukan asset monokrom yang sesuai; filter
+tidak melakukan segmentasi gambar.
 
 ## Melepas theme
 
