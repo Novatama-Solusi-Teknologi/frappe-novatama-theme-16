@@ -10,4 +10,7 @@ app_license = "MIT"
 # Desk only. Frappe loads this after its standard Desk styles.
 app_include_css = [f"/assets/novatama_theme_v16/css/novatama_theme.css?v={__version__}"]
 
-app_include_js = [f"/assets/novatama_theme_v16/js/novatama_theme.js?v={__version__}"]
+app_include_js = [
+    f"/assets/novatama_theme_v16/js/novatama_theme.js?v={__version__}",
+    f"/assets/novatama_theme_v16/js/desktop_branding.js?v={__version__}",
+]

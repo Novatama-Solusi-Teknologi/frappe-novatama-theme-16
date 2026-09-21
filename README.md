@@ -18,6 +18,19 @@ konten halaman, logo navbar, dan permission tetap bawaan.
 Tidak perlu membuat record Website Theme. Jangan aktifkan bersamaan dengan
 app lain yang mengubah CSS sidebar karena urutan stylesheet dapat berkonflik.
 
+## Header dan footer Desktop (v0.3.0)
+
+Di atas ikon, H1 menampilkan default Company pengguna dari API defaults Frappe.
+Jika kosong, gunakan company global yang diizinkan bagi pengguna. Jika belum ada
+company default, tampilkan “Desktop”. H3 menampilkan nama lengkap pengguna login,
+dengan ID pengguna sebagai fallback. Tidak ada nama company atau user yang di-hardcode.
+Perubahan default akan terbaca saat Desktop dirender kembali; reload jika boot
+session masih menyimpan default sebelumnya.
+
+Footer di bawah menampilkan “Powered by Frappe, implemented by Novatama”. Layout
+responsif menempatkannya di bawah layar atau setelah konten panjang, tanpa menutupi
+ikon. Header/footer hanya berlaku di Desktop, bukan halaman List/Form/Report.
+
 ## Kompatibilitas
 
 Frappe `>=16.0.0,<17.0.0`, dengan atau tanpa ERPNext v16. Gunakan runtime Python
@@ -133,6 +146,7 @@ Checklist pada staging v16 sebelum produksi:
 - Coba light/dark mode, sidebar collapse/expand, nested section, dan drawer mobile.
 - Periksa keyboard focus, ikon, profile, dropdown menu, dan notification panel.
 - Periksa Desktop dengan ikon Solid/Outline, folder beserta thumbnail, dan pagination.
+- Periksa nama company/user, user tanpa company default, kembali ke Desktop, dan edit layout; header/footer tidak boleh duplikat.
 - Coba tombol Save/New/Submit serta tombol dialog: normal, hover, active, focus, disabled.
 - Periksa dengan role pengguna berbeda; menu dan akses mengikuti permission asli.
 - Pastikan request `/assets/novatama_theme_v16/css/novatama_theme.css` berstatus 200.
