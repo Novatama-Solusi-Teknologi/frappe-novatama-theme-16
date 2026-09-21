@@ -48,6 +48,19 @@
 			defs.append(filter);
 		}
 		document.body.append(svg);
+		// Keep fragment URLs in document-local CSS. In an external stylesheet,
+		// url(#id) resolves against that stylesheet instead of these inline filters.
+		const style = document.createElement("style");
+		style.id = "novatama-icon-filter-styles";
+		style.textContent = `
+			html.novatama-icon-filters .desktop-icon > .icon-container > img {
+				filter: url("#novatama-solid-icon");
+			}
+			html.novatama-icon-filters .desktop-icon > .icon-container > img[src*="/desktop_icons/outline/"] {
+				filter: url("#novatama-outline-icon");
+			}
+		`;
+		document.head.append(style);
 		document.documentElement.classList.add("novatama-icon-filters");
 	}
 	if (document.readyState === "loading") {

@@ -102,13 +102,8 @@
 /* Preserve the original artwork, including white cutouts and antialiasing.
  * Filters are defined once by novatama_theme.js, without editing icon assets.
  */
-html.novatama-icon-filters .desktop-icon > .icon-container > img {
-	filter: url("#novatama-solid-icon");
-}
-
-html.novatama-icon-filters .desktop-icon > .icon-container > img[src*="/desktop_icons/outline/"] {
-	filter: url("#novatama-outline-icon");
-}
+/* Fragment URL rules live in a document-local <style>, injected by the JS.
+ * A url(#id) in this external CSS resolves against the CSS file URL. */
 
 .desktop-wrapper .desktop-container .desktop-icon:focus-visible {
 	outline: 2px solid var(--novatama-white);

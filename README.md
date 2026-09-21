@@ -57,6 +57,33 @@ lalu hard refresh browser.
 
 Panduan resmi: [Custom app Frappe Cloud](https://docs.frappe.io/cloud/benches/custom-app).
 
+## Update 0.2.1: asset lama masih tampil
+
+Rilis ini menambahkan `?v=0.2.1` pada URL CSS dan JavaScript melalui hooks untuk
+memisahkan cache tiap rilis. Referensi filter SVG kini ditempatkan di dokumen,
+bukan stylesheet eksternal, agar merujuk ke filter ikon yang benar.
+
+Setelah push commit terbaru, deploy/update app pada bench group Frappe Cloud,
+pastikan site memakai deployment tersebut, lalu clear cache site dan reload Desk.
+Push GitHub saja tidak mengganti asset pada site yang masih memakai deployment lama.
+
+Untuk bench mandiri setelah mengambil commit terbaru:
+
+```bash
+bench build --app novatama_theme_v16
+bench --site SITE_NAME clear-cache
+bench restart
+```
+
+Verifikasi di browser DevTools → Network setelah reload:
+
+- `novatama_theme.css?v=0.2.1` dan `novatama_theme.js?v=0.2.1` harus berstatus 200.
+- Response CSS harus mengandung `.desktop-wrapper` dan `.btn.btn-primary`.
+- Jika URL masih tanpa versi, site masih memakai hooks/deployment/cache lama.
+- Jika asset terbaru sudah dimuat tetapi warna salah, periksa computed style dan
+  aturan dari app theme lain yang menimpa warna. Versi dan URL asset saja belum
+  membuktikan hasil visual pada setiap site.
+
 ## Instalasi melalui Bench
 
 Jalankan dari root bench v16:
