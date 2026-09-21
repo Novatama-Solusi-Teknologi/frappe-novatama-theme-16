@@ -1,0 +1,71 @@
+/* Novatama — Frappe v16 persistent Desk navigation.
+ * Logo palette: blue #205375, orange #F66B0E.
+ * Keep tokens local: dropdowns, forms and notifications use native Desk colors.
+ */
+.body-sidebar-container .body-sidebar {
+	--novatama-blue: #205375;
+	--novatama-orange: #f66b0e;
+	--novatama-white: #ffffff;
+	--sidebar-hover-color: #2d6588;
+	--sidebar-active-color: var(--novatama-orange);
+	--sidebar-border-color: rgb(255 255 255 / 18%);
+	--surface-menu-bar: var(--novatama-blue);
+	background: var(--novatama-blue);
+}
+
+.body-sidebar-container .body-sidebar :is(
+	.standard-sidebar-item > .item-anchor,
+	.standard-sidebar-item > .item-anchor .sidebar-item-label,
+	.standard-sidebar-item > .item-anchor .sidebar-item-icon,
+	.standard-sidebar-item > .item-anchor .keyboard-shortcut,
+	.sidebar-header,
+	.sidebar-header .sidebar-item-label,
+	.sidebar-header > .drop-icon,
+	.sidebar-user-button,
+	.sidebar-user-button .avatar-name-email > span,
+	.onboarding-sidebar,
+	.promotional-banner,
+	.collapse-sidebar-link,
+	.bottom-edit-controls .discard-button
+) {
+	color: var(--novatama-white) !important;
+}
+
+/* Both legacy stroke icons and v16 currentColor icons are supported.
+ * Scope to navigation controls so icons in popovers retain their own colors.
+ */
+.body-sidebar-container .body-sidebar :is(
+	.standard-sidebar-item > .item-anchor,
+	.sidebar-header > .drop-icon,
+	.onboarding-sidebar,
+	.promotional-banner,
+	.collapse-sidebar-link
+) :is(.icon, .es-icon) {
+	--icon-stroke: var(--novatama-white);
+	--icon-fill: transparent;
+	color: var(--novatama-white) !important;
+	stroke: var(--novatama-white) !important;
+}
+
+.body-sidebar-container .body-sidebar .standard-sidebar-item.active-sidebar,
+.body-sidebar-container .body-sidebar .standard-sidebar-item.active-sidebar:hover {
+	background: var(--novatama-orange);
+	box-shadow: none;
+	border-radius: 8px;
+}
+
+.body-sidebar-container .body-sidebar .divider {
+	border-top-color: var(--sidebar-border-color);
+}
+
+.body-sidebar-container .body-sidebar :is(
+	.item-anchor,
+	.sidebar-header,
+	.sidebar-user-button,
+	.onboarding-sidebar,
+	.collapse-sidebar-link
+):focus-visible {
+	outline: 2px solid var(--novatama-white);
+	outline-offset: -2px;
+	border-radius: 8px;
+}

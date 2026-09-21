@@ -1,0 +1,19 @@
+[build-system]
+requires = ["flit_core>=3.9,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "novatama_theme_v16"
+authors = [{name = "Novatama"}]
+description = "Novatama navy and orange sidebar theme for Frappe / ERPNext 16"
+readme = "README.md"
+requires-python = ">=3.14"
+license = {file = "LICENSE"}
+dynamic = ["version"]
+dependencies = []
+
+[tool.bench.frappe-dependencies]
+frappe = ">=16.0.0,<17.0.0"
+
+[tool.flit.sdist]
+include = ["docs/", ".github/", "LICENSE"]

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Novatama Theme v16 — Preview</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:14px system-ui,sans-serif;background:#f6f7f9;color:#253241}.layout{display:flex;min-height:100vh}.body-sidebar{width:240px;min-height:100vh;padding:16px 12px;display:flex;flex-direction:column;gap:20px}.sidebar-header{display:flex;align-items:center;padding:10px 8px;text-decoration:none;font-size:20px;font-weight:650}.header-subtitle{font-size:11px;font-weight:400;display:block;margin-top:4px}.standard-sidebar-item{border-radius:8px;margin:4px 0}.item-anchor{display:flex;align-items:center;gap:10px;text-decoration:none;padding:10px 12px;color:#555}.standard-sidebar-item:not(.active-sidebar):hover{background:var(--sidebar-hover-color)}.sidebar-item-icon{display:flex}.icon{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7}.section-break{font-size:11px;font-weight:600;letter-spacing:.1em;margin-top:14px}.divider{border-top:1px solid #ddd}.body-sidebar-bottom{margin-top:auto}.sidebar-user-button{display:flex;gap:10px;padding:12px 6px;text-decoration:none}.avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#ffffff24;color:white}.avatar-name-email>span{display:block;font-size:12px}.content{padding:52px 5vw;flex:1;min-width:0}h1{font-size:32px;letter-spacing:-1px;margin:12px 0}p{line-height:1.7;color:#62717e}.eyebrow{font-size:12px;color:#205375;font-weight:700;letter-spacing:.14em}.cards{display:flex;gap:16px;flex-wrap:wrap;margin:30px 0}.card{background:white;border:1px solid #e4e8ed;border-radius:12px;padding:24px;flex:1;min-width:150px}.card strong{display:block;font-size:26px;margin:12px 0}.card span{color:#62717e}.note{background:white;padding:24px;border:1px solid #e4e8ed;border-radius:12px;max-width:760px}button{cursor:pointer;border:1px solid #ccd5df;border-radius:7px;padding:9px 14px;background:white;color:#253241}.controls{display:flex;gap:8px;margin-top:24px}.collapsed .body-sidebar{width:64px;padding:16px 6px}.collapsed .sidebar-item-label,.collapsed .avatar-name-email{display:none}.collapsed .sidebar-header{font-size:0;padding:10px 6px}.collapsed .sidebar-header:before{content:'N';font-size:22px;color:white}.collapsed .section-break{display:none}.collapsed .sidebar-user-button{padding:6px}.collapsed .item-anchor{padding:12px}.collapsed .sidebar-header .sidebar-item-label{display:none}[data-theme=dark] body{background:#171c23;color:#e8edf4}[data-theme=dark] :is(.card,.note){background:#222b35;border-color:#364252}[data-theme=dark] p,[data-theme=dark] .card span{color:#b9c4d1}[data-theme=dark] .eyebrow{color:#8dbcd8}@media(max-width:650px){.content{padding:28px 20px}.body-sidebar{width:190px}h1{font-size:24px}.cards{display:block}.card{margin-bottom:10px}}
+</style>
+<link rel="stylesheet" href="../novatama_theme_v16/public/css/novatama_theme.css">
+</head>
+<body>
+<svg style="display:none"><symbol id="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol></svg>
+<div class="layout">
+<div class="body-sidebar-container"><aside class="body-sidebar" aria-label="Navigasi preview">
+<a class="sidebar-header" href="#home"><span class="sidebar-item-label">novatama<span class="sidebar-item-label header-subtitle">ERPNext · Theme v16</span></span></a>
+<div class="divider"></div>
+<nav class="sidebar-items" aria-label="Modul">
+<div class="standard-sidebar-item"><div class="item-anchor section-break"><span class="sidebar-item-label">WORKSPACE</span></div></div>
+</nav>
+<div class="body-sidebar-bottom"><div class="divider"></div><a href="#profile" class="sidebar-user-button"><span class="avatar">N</span><span class="avatar-name-email"><span>Novatama</span><span>Administrator</span></span></a></div>
+</aside></div>
+<main class="content"><div class="eyebrow">NOVATAMA THEME / FRAPPE 16</div><h1 id="page-title">Accounting</h1><p>Sidebar biru tua. Navigasi putih. Menu aktif oranye.</p>
+<div class="cards"><div class="card"><span>Sidebar</span><strong>#205375</strong><span>Biru Novatama</span></div><div class="card"><span>Menu aktif</span><strong>#F66B0E</strong><span>Oranye Novatama</span></div><div class="card"><span>Teks & ikon</span><strong>#FFFFFF</strong><span>Putih</span></div></div>
+<div class="note"><strong>Preview warna sidebar</strong><p>Ini mockup lokal yang memakai file CSS theme sebenarnya. Klik menu untuk melihat highlight aktif. Perilaku navigasi pada ERPNext tetap ditangani oleh Frappe.</p><div class="controls"><button id="collapse" aria-pressed="false">Collapse sidebar</button><button id="mode" aria-pressed="false">Dark mode</button></div></div>
+</main></div>
+<script>
+const nav=document.querySelector('nav');
+for(const title of ['Home','Accounting','Selling','Buying','Stock','Assets','Projects','Support']){
+ const row=document.createElement('div');row.className='standard-sidebar-item'+(title==='Accounting'?' active-sidebar':'');
+ const link=document.createElement('a');link.className='item-anchor';link.href='#'+title.toLowerCase();
+ link.innerHTML='<span class="sidebar-item-icon"><svg class="icon" aria-hidden="true"><use href="#nav-icon"></use></svg></span><span class="sidebar-item-label"></span>';
+ link.querySelector('.sidebar-item-label').textContent=title;if(title==='Accounting')link.setAttribute('aria-current','page');
+ link.addEventListener('click',()=>{nav.querySelectorAll('.active-sidebar').forEach(el=>el.classList.remove('active-sidebar'));nav.querySelectorAll('[aria-current]').forEach(el=>el.removeAttribute('aria-current'));row.classList.add('active-sidebar');link.setAttribute('aria-current','page');document.getElementById('page-title').textContent=title});row.append(link);nav.append(row);
+}
+document.getElementById('collapse').onclick=function(){const active=document.body.classList.toggle('collapsed');this.setAttribute('aria-pressed',active);this.textContent=active?'Expand sidebar':'Collapse sidebar'};
+document.getElementById('mode').onclick=function(){const active=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=active?'dark':'light';this.setAttribute('aria-pressed',active);this.textContent=active?'Light mode':'Dark mode'};
+</script>
+</body></html>
